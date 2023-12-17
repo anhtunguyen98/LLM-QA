@@ -1,0 +1,1 @@
+python test_squad.py --adapter_name=squad_final_checkpoints

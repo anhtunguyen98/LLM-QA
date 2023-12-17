@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  semantic-search:
+    image: semantic-search:latest
+    build:
+      context: ./fastapi
+      dockerfile: Dockerfile
+    ports:
+      - ${API_HOST_PORT}:7861
+    environment:
+      - QDRANT_HOST=${QDRANT_HOST}
+      - QDRANT_PORT=${QDRANT_PORT}
+    depends_on:
+      - qdrant
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - ${QDRANT_HOST_PORT}:6333
+    volumes:
+      - ${QDRANT_STORAGE}:/qdrant/storage

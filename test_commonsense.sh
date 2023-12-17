@@ -1,0 +1,1 @@
+python test_commonsense.py  --adapter_name=commonsense_final_checkpoints
